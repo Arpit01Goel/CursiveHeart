@@ -9,7 +9,12 @@ const dataRoutes = require("./Routes/DataRoutes");
 const profile = require("./Routes/ProfileRoutes");
 const app = express();
 const PORT = process.env.PORT || 5000;
-
+// Allow requests from your frontend's domain
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:3000", // Replace with your frontend URL
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true,
+}));
 // Middleware
 app.use(cors());
 app.use(express.json());

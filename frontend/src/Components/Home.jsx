@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 // Decrypt function for the frontend
-import CryptoJS from "crypto-js";
+// import CryptoJS from "crypto-js";
+
 
 
 function Home() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [letters, setLetters] = useState([]);
   const [error, setError] = useState("");
   const [selectedLetter, setSelectedLetter] = useState(null);
@@ -19,7 +21,7 @@ function Home() {
           return;
         }
 
-        const response = await fetch("http://localhost:5000/api/data", {
+        const response = await fetch("API_BASE_URL/api/data", {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -92,7 +94,7 @@ function Home() {
     try {
       const token = sessionStorage.getItem("authToken");
       const response = await fetch(
-        `http://localhost:5000/api/data/letters/${letter._id}`,
+        `${API_BASE_URL}/api/data/letters/${letter._id}`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
@@ -122,7 +124,7 @@ function Home() {
       const { _ , ...letterToUpdate } = updatedLetter;
   
       const response = await fetch(
-        `http://localhost:5000/api/data/letters/${updatedLetter._id}`,
+        `${API_BASE_URL}/api/data/letters/${updatedLetter._id}`,
         {
           method: "PUT",
           headers: {
@@ -277,7 +279,7 @@ function Home() {
     try {
       const token = sessionStorage.getItem("authToken");
       const response = await fetch(
-        `http://localhost:5000/api/data/letters/${selectedLetter._id}/decrypt`,
+        `API_BASE_URL/api/data/letters/${selectedLetter._id}/decrypt`,
         {
           method: "POST",
           headers: {

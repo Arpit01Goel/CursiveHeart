@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import MainNavbar from "./MainNavbar.jsx"; // Assuming you have a MainNavbar component
 
 function Profile() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const [username, setUsername] = useState("");
   const [letters, setLetters] = useState([]);
   const [error, setError] = useState("");
@@ -11,7 +13,7 @@ function Profile() {
   const fetchPublicLetters = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/public?username=${username}`,
+        `API_BASE_URL/api/public?username=${username}`,
         {
           method: "GET",
         }
@@ -35,7 +37,7 @@ function Profile() {
   const fetchFullLetter = async (letterId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/public/letters/${letterId}`,
+        `API_BASE_URL/api/public/letters/${letterId}`,
         {
           method: "GET",
         }

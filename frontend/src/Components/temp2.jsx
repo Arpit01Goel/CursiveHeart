@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import LetterList from "./temp1";
 
 function ShowLetters({ fetchUrl, headers = {} }) {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const [letters, setLetters] = useState([]);
   const [error, setError] = useState("");
   const [selectedLetter, setSelectedLetter] = useState(null); // For the modal
@@ -34,7 +36,7 @@ function ShowLetters({ fetchUrl, headers = {} }) {
 
   const handleDecrypt = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/decrypt", {
+      const response = await fetch("API_BASE_URL/api/decrypt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +64,7 @@ function ShowLetters({ fetchUrl, headers = {} }) {
         [property]: !selectedLetter[property],
       };
 
-      const response = await fetch(`http://localhost:5000/api/letters/${selectedLetter._id}`, {
+      const response = await fetch(`API_BASE_URL/api/letters/${selectedLetter._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
