@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom"; // Import useNavigate
 function Login() {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  console.log("API_BASE_URL:", API_BASE_URL); // Log the API base URL for debugging
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -10,7 +10,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("${API_BASE_URL}/api/login", {
+    const response = await fetch(`${API_BASE_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

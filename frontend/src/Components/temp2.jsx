@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LetterList from "./temp1";
 
 function ShowLetters({ fetchUrl, headers = {} }) {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const [letters, setLetters] = useState([]);
   const [error, setError] = useState("");
@@ -36,7 +36,7 @@ function ShowLetters({ fetchUrl, headers = {} }) {
 
   const handleDecrypt = async () => {
     try {
-      const response = await fetch("${API_BASE_URL}/api/decrypt", {
+      const response = await fetch(`${API_BASE_URL}/api/decrypt`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

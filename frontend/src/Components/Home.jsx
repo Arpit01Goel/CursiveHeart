@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 
 function Home() {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [letters, setLetters] = useState([]);
   const [error, setError] = useState("");
   const [selectedLetter, setSelectedLetter] = useState(null);
@@ -21,7 +21,7 @@ function Home() {
           return;
         }
 
-        const response = await fetch("${API_BASE_URL}/api/data", {
+        const response = await fetch(`${API_BASE_URL}/api/data`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });

@@ -3,7 +3,7 @@ import bgImage from "../assets/BG.jpg";
 import MainNavbar from "./MainNavbar";
 
 function Letter() {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const [title, setTitle] = useState(""); // State for the title
   const [date, setDate] = useState(""); // State for the date
@@ -47,7 +47,7 @@ function Letter() {
     }
 
     try {
-      const response = await fetch("${API_BASE_URL}/api/data", {
+      const response = await fetch(`${API_BASE_URL}/api/data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
