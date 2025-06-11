@@ -1,7 +1,7 @@
 import React from "react"
 import Main from "./Pages/Main.jsx"
 import Authentication from "./Pages/Authentication.jsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // 
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; // 
 import Profile from "./Components/Profile.jsx";
 import Letter from "./Components/Letter.jsx";
 import Welcome from "./Components/Welcome.jsx";
