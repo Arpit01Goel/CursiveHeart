@@ -10,7 +10,7 @@ function App() {
   // console.log("hello");
   // console.log("API_BASE_URL:", import.meta.env.VITE_API_BASE_URL); // Log the API base URL for debugging
   return (
-    <Router>
+    <Router basename="/frontend">
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/Auth/*" element={<Authentication />} />
