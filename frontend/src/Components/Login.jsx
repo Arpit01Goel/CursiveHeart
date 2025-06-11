@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 function Login() {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   console.log("API_BASE_URL:", API_BASE_URL); // Log the API base URL for debugging
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,8 +23,14 @@ function Login() {
       sessionStorage.setItem("authToken", data.token);
       sessionStorage.setItem("username", username); // Save username for later use
       
-        window.location.href = "/home"
-      
+      // Add error handling
+  try {
+    navigate("/home", { replace: true });
+  } catch (error) {
+    console.error("Navigation failed:", error);
+    // Fallback navigation
+    window.location.href = "/home";
+  }
     } else {
       setMessage(data.message|| "Login failed");
     }

@@ -22,7 +22,7 @@ function SignUp() {
     if (response.status === 201) {
       setMessage("Sign Up successful!");
       setTimeout (() =>{
-        navigate("/login");
+        navigate("/Auth/login");
       }, 250);
     } else {
       setMessage(data.message || "Error during Sign Up.");
