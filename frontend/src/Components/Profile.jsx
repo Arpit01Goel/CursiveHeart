@@ -13,7 +13,7 @@ function Profile() {
   const fetchPublicLetters = async () => {
     try {
       const response = await fetch(
-        `API_BASE_URL/api/public?username=${username}`,
+        "${API_BASE_URL}/api/public?username=${username}`,
         {
           method: "GET",
         }
@@ -37,7 +37,7 @@ function Profile() {
   const fetchFullLetter = async (letterId) => {
     try {
       const response = await fetch(
-        `API_BASE_URL/api/public/letters/${letterId}`,
+        "${API_BASE_URL}/api/public/letters/${letterId}`,
         {
           method: "GET",
         }

@@ -21,7 +21,7 @@ function Home() {
           return;
         }
 
-        const response = await fetch("API_BASE_URL/api/data", {
+        const response = await fetch("${API_BASE_URL}/api/data", {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -279,7 +279,7 @@ function Home() {
     try {
       const token = sessionStorage.getItem("authToken");
       const response = await fetch(
-        `API_BASE_URL/api/data/letters/${selectedLetter._id}/decrypt`,
+        "${API_BASE_URL}/api/data/letters/${selectedLetter._id}/decrypt`,
         {
           method: "POST",
           headers: {

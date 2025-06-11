@@ -36,7 +36,7 @@ function ShowLetters({ fetchUrl, headers = {} }) {
 
   const handleDecrypt = async () => {
     try {
-      const response = await fetch("API_BASE_URL/api/decrypt", {
+      const response = await fetch("${API_BASE_URL}/api/decrypt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function ShowLetters({ fetchUrl, headers = {} }) {
         [property]: !selectedLetter[property],
       };
 
-      const response = await fetch(`API_BASE_URL/api/letters/${selectedLetter._id}`, {
+      const response = await fetch("${API_BASE_URL}/api/letters/${selectedLetter._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
